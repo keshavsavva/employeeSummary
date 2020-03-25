@@ -44,6 +44,11 @@ const employeeType = [
 const managerInfo = [
     {
         type: "input",
+        name: "name",
+        message: "What is the Manager's name?"
+    },
+    {
+        type: "input",
         name: "email",
         message: "What is the Manager's email?"
     },
@@ -62,6 +67,11 @@ const managerInfo = [
 const engineerInfo = [
     {
         type: "input",
+        name: "name",
+        message: "What is the Engineer's name?"
+    },
+    {
+        type: "input",
         name: "email",
         message: "What is the Engineer's email?"
     },
@@ -78,6 +88,11 @@ const engineerInfo = [
 ];
 
 const internInfo = [
+    {
+        type: "input",
+        name: "name",
+        message: "What is the Intern's name?"
+    },
     {
         type: "input",
         name: "email",
@@ -109,21 +124,21 @@ const buildTeam = () => {
     inquirer.prompt(employeeType).then( (data) => {
         if (data.employeeType === "manager") {
             inquirer.prompt(managerInfo).then( (data) => {
-                let manager = new Manager(data.id, data.email, data.officeNum);
+                let manager = new Manager(data.name, data.id, data.email, data.officeNum);
                 team.push(manager);
                 console.log(`Manager ${data.id} added to the team!`);
                 continueAdding();
             })
         } else if (data.employeeType === "engineer") {
             inquirer.prompt(engineerInfo).then( (data) => {
-                let engineer = new Engineer(data.id, data.email, data.github);
+                let engineer = new Engineer(data.name, data.id, data.email, data.github);
                 team.push(engineer);
                 console.log(`Engineer ${data.id} added to the team!`);
                 continueAdding();
             })
         } else if (data.employeeType === "intern") {
             inquirer.prompt(internInfo).then( (data) => {
-                let intern = new Intern(data.id, data.email, data.school);
+                let intern = new Intern(data.name, data.id, data.email, data.school);
                 team.push(intern);
                 console.log(`Intern ${data.id} added to the team!`);
                 continueAdding();
